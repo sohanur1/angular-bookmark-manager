@@ -1,0 +1,60 @@
+<h2 class="card-header-text" style="text-align: center;">
+   <strong>Add Bookmark</strong> 
+</h2>
+
+<div class="card-body">
+    <form [formGroup]="categoryForm"  (ngSubmit)="onSubmit()" class="right-align-label">
+        <div class="col-md-6">
+          <div class="mb-3 row">
+              <label class="col-md-4 col-form-label" style="padding-inline: 5% 10%;">title <span class="red-text">*</span></label>
+              <div class="col-md-8 validation-input-space">
+                  <input type="text" class="form-control" value="" placeholder="title" 
+                      ngModel required formControlName="title" [ngClass]="{'is-invalid': (f.title.dirty || f.title.touched)&&f.title.invalid,'is-valid': f.title.touched && !f.title.errors }">
+                  <div *ngIf="f.title.touched && f.title.invalid" class="text-danger" >
+                      <div *ngIf="f.title.errors && f.title.errors.required">please fill the form</div>
+                  </div>
+              </div>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="mb-3 row">
+              <label class="col-md-4 col-form-label" style="padding-inline: 5% 10%;">Url <span class="red-text">*</span></label>
+              <div class="col-md-8 validation-input-space">
+                  <input type="text" class="form-control" value="" placeholder="url" 
+                      ngModel required formControlName="url" 
+                      [ngClass]="{'is-invalid': (f.url.dirty || f.url.touched)&&f.url.invalid,'is-valid': f.url.touched && !f.url.errors }">
+                  <div *ngIf="f.url.touched && f.url.invalid" class="text-danger">
+                    <div *ngIf="f.url.errors && f.url.errors.required">
+                        please fill the form
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3 row">
+                <label class="col-md-4 col-form-label" style="padding-inline: 5% 10%;">Category <span class="red-text">*</span></label>
+                <div class="col-md-8 validation-input-space">
+                    <input type="text" class="form-control" value="" placeholder="category" 
+                        ngModel required formControlName="category" 
+                        [ngClass]="{'is-invalid': (f.category.dirty || f.category.touched)&&f.category.invalid,'is-valid': f.category.touched && !f.category.errors }">
+                    <div *ngIf="f.category.touched && f.category.invalid" class="text-danger">
+                      <div *ngIf="f.category.errors && f.category.errors.required">
+                        please fill the form
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      <br>
+        <div class="col-md-6">
+            <div class="text-center">
+                <button class="btn btn-danger m-2" type="button"
+                    (click)="resetForm()">Cancel</button>
+                <button class="btn btn-primary" type="submit" (click)="onSubmit()">Create</button>
+            </div>
+        </div>
+    </form>
+  </div>
